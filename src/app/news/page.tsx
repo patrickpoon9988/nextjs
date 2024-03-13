@@ -1,3 +1,5 @@
+import { configureStore } from '@reduxjs/toolkit'
+
 export default async function News() {
 
     // put codes where above return method 
