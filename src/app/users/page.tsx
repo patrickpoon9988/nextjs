@@ -35,19 +35,20 @@ const Users = () => {
         } else {
             throw res;
         }
-    }).then(res => {
+    }).then((res) => {
         res.json().then(s => s as uuid[]).then(y => uuidList = y)
     }).catch((exception) => {
         console.log(exception)
     })
   }
 
+  const uuidListItems = uuidList.map(x => <p>{x}</p>);
+
   return (
     <div>
       <h2>Hello Users</h2>
       <button className="bg-amber-500" onClick={insertUsers}>Insert new uuid</button>
-
-
+      <p>{uuidListItems}</p>
     </div>
   );
 };
