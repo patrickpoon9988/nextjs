@@ -10,8 +10,27 @@ export default async function News() {
     }
 
     const graphQLQuery2 = {
-      contractEvent : '{event_id}'
+      query: `{
+        hello
+        contractEvent {
+          batch_name
+          event_id
+          image_name
+          quarter_name
+        }
+      }`
     }
+
+    const graphQLQuery3 = {
+      query: `{
+        hello
+        contractImage(image_id: 999) {
+          contract_name
+          image_name
+        }
+      }`
+    }
+
 
     const graphQL = fetch("http://localhost:8080/graphql", 
       {
@@ -19,13 +38,13 @@ export default async function News() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(graphQLQuery2)
+        body: JSON.stringify(graphQLQuery3)
       }
     )
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      console.log(JSON.stringify(graphQLQuery2));
+      console.log(res.data);
     })
 
     return (
